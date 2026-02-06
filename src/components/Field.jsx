@@ -4,7 +4,9 @@ const Field = (props) => {
         id,
         label,
         type = 'text',
+        value,
         onInput,
+        ref,
     } = props
     
     return (
@@ -22,6 +24,8 @@ const Field = (props) => {
             autoComplete="off"
             onInput={onInput}
             type={type}
+            value={value}
+            ref={ref}
           />
         </div>
     )
