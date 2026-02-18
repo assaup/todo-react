@@ -1,4 +1,4 @@
-import {memo, useContext} from 'react'
+import {memo, useContext } from 'react'
 import { TasksContext } from '../../context/TasksContext'
 import RouterLink from '../RouterLink/RouterLink'
 import styles from './TodoItem.module.scss'
@@ -15,12 +15,19 @@ const TodoItem = (props) => {
       firstIncompleteTaskId,
       firstIncompleteTaskRef,
       deleteTask,
-      toggleTaskComplete
+      toggleTaskComplete,
+      disapperingTaskId,
+      apperingTaskId,
     } = useContext(TasksContext)
-
+     
     return (
         <li 
-          className={`${styles.todoItem} ${className}`} 
+          className={`
+              ${styles.todoItem} 
+              ${className} 
+              ${disapperingTaskId === id ? styles.isDisappearing : ''}
+              ${apperingTaskId === id ? styles.isAppearing : ''}
+            `} 
           ref={id === firstIncompleteTaskId ? firstIncompleteTaskRef : null}>
           <input
             className={styles.checkbox}
